@@ -42,7 +42,7 @@ class Faq extends Model {
      * Get the faqTopic that owns the faq record
      */
     public function faqTopic() {
-        return $this->belongsTo(FaqTopicModel::class);
+        return $this->belongsTo(FaqTopic::class);
     }
 
     /**

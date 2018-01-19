@@ -37,7 +37,7 @@ class FaqTopic extends Model {
      * Get all faq records associated with the faq topic
      */
     public function faqs() {
-        return $this->hasMany(FaqModel::class);
+        return $this->hasMany(Faq::class);
     }
     
 }
