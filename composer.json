@@ -11,9 +11,7 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {
-		"php": ">=7.0"
-	},
+    "require": {},
 	"autoload": {
         "psr-4": {
             "Nikunjkabariya\\Faq\\": "src"
