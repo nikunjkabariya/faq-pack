@@ -6,25 +6,33 @@
     "authors": [
         {
             "name": "Nikunj Kabariya",
-            "email": "nikunjkumar.kabariya@brainvire.com"
+            "email": "nikunjkumar.kabariya@brainvire.com",
+			"role": "Developer"
         }
     ],
     "minimum-stability": "dev",
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Nikunjkabariya\\Faq\\ServiceProviders\\FaqServiceProvider"
-            ],
-            "aliases": {
-                "Facade": "Nikunjkabariya\\Faq\\Facades\\FaqFacade"
-            }
+    "require": {
+		"php": ">=7.0"
+	},
+	"autoload": {
+        "psr-4": {
+            "Nikunjkabariya\\Faq\\": "src"
         }
     },
-    "require": {},
 	"scripts": {
         "post-package-install": [
             "php -r \"copy('src/config/faq.php', 'config/faq.php');\"",
             "php -r \"copy('src/routes/routes.php', 'routes/faq.php');\""
         ]
+    },
+	"extra": {
+        "laravel": {
+            "providers": [
+                "Nikunjkabariya\\Faq\\FaqServiceProvider"
+            ],
+            "aliases": {
+                "Facade": "Nikunjkabariya\\Faq\\Facades\\FaqFacade"
+            }
+        }
     }
 }
