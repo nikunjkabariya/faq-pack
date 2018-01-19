@@ -53,7 +53,7 @@ class Faq extends Model {
     protected static function createRecord($request) {
         // generate slug
         $request['slug'] = str_slug($request['question']);
-        return FaqModel::create($request);
+        return self::create($request);
     }
     
     /**
