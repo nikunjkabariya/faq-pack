@@ -20,5 +20,11 @@
             }
         }
     },
-    "require": {}
+    "require": {},
+	"scripts": {
+        "post-package-install": [
+            "php -r \"copy('src/config/faq.php', 'config/faq.php');\"",
+            "php -r \"copy('src/routes/routes.php', 'routes/faq.php');\""
+        ]
+    }
 }
