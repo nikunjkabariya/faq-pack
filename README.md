@@ -8,7 +8,7 @@ composer require nikunjkumar.kabariya/faq
 
 Run
 ```
-composer dump-autoload
+composer dump-autoload --optimize
 ```
 
 Create blank config folder on root of your application if not exist.
@@ -55,12 +55,12 @@ GET    | /api/faqs/{faqTopicSlug}          |            | \NikunjKabariya\Faq\Fa
 
 # Extend / Add new fields
 Copy these files in your application if not exist:
-- config/content_page.php
-- routes/content_page.php
+- config/faq.php
+- routes/faq.php
 
 - create new migration file in your application, for ex.:
   ```
-  php artisan make:migration add_featured_image_in_content_pages_table --table=content_pages
+  php artisan make:migration add_featured_image_in_faqs_table --table=faqs
   ```
   
   then, run this command 
@@ -73,7 +73,7 @@ Copy these files in your application if not exist:
   config/faq.php file  
   ```
   
-- You can modify package's route in your application's faq route file, you can add/change prefix, groups, namespace etc...
+- You can modify package's route in your application's faq route file, you can add/change prefix, groups, namespace, middleware etc. If you override method in controller then make sure to change namespace for that particular route in this file.
   ```
   routes/faq.php file  
   ```
