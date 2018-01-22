@@ -11,6 +11,8 @@ Run
 composer dump-autoload
 ```
 
+Create blank config folder on root of your application if not exist.
+
 Copy the required files:
 ```
 cp vendor/nikunjkumar.kabariya/faq/src/config/faq.php config/faq.php
