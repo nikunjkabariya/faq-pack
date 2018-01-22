@@ -6,19 +6,28 @@ You can install the package via Composer:
 composer require nikunjkumar.kabariya/faq
 ```
 
+Run
+```
+composer dump-autoload
+```
+
 Copy the required files:
 ```
 cp vendor/nikunjkumar.kabariya/faq/src/config/faq.php config/faq.php
 cp vendor/nikunjkumar.kabariya/faq/src/routes/routes.php routes/faq.php
 ```
 
-Register service provider
+Modify the bootstrap flow (bootstrap/app.php file) & Register service provider
+```
+// Enable Facades
+$app->withFacades();
+
+// Enable Eloquent
+$app->withEloquent();
+```
+
 ```php
 $app->register(Nikunjkabariya\Faq\FaqServiceProvider::class);
-```
-Run
-```
-composer dump-autoload
 ```
 
 Now, run your migrations:

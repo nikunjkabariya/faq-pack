@@ -42,6 +42,10 @@ class FaqServiceProvider extends ServiceProvider {
      */
     public function register() {
 
+		if ($this->isLumen()) {
+            require_once 'lumen.php';
+        }
+		
         // Merge config file
         if (file_exists(base_path() . '/config/faq.php')) {
             $this->mergeConfigFrom(base_path() . '/config/faq.php', $this->packageName);
@@ -63,6 +67,16 @@ class FaqServiceProvider extends ServiceProvider {
         });
 
         $this->app->make('Nikunjkabariya\Faq\FaqController');
+    }
+	
+	/**
+     * Check if app uses Lumen.
+     *
+     * @return bool
+     */
+    protected function isLumen()
+    {
+        return str_contains($this->app->version(), 'Lumen');
     }
 
     /**
