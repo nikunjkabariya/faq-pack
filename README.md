@@ -12,11 +12,6 @@ cp vendor/nikunjkumar.kabariya/faq/src/config/faq.php config/faq.php
 cp vendor/nikunjkumar.kabariya/faq/src/routes/routes.php routes/faq.php
 ```
 
-Now, run your migrations:
-```
-php artisan migrate
-```
-
 Register service provider
 ```php
 $app->register(Nikunjkabariya\Faq\FaqServiceProvider::class);
@@ -25,6 +20,27 @@ Run
 ```
 composer dump-autoload
 ```
+
+Now, run your migrations:
+```
+php artisan migrate
+```
+
+# Installed routes
+
+This package mounts the following routes after you call routes() method (see instructions below):
+
+Verb | Path | NamedRoute | Controller | Action | Middleware
+--- | --- | --- | --- | --- | ---
+GET    | /api/faq/list                     |            | \NikunjKabariya\Faq\FaqController | index                 | admin_api
+GET    | /api/faq/show/{id}                |            | \NikunjKabariya\Faq\FaqController | show                  | admin_api
+POST   | /api/faq/create                   |            | \NikunjKabariya\Faq\FaqController | store                 | admin_api
+DELETE | /api/faq/delete/{id}              |            | \NikunjKabariya\Faq\FaqController | destroy               | admin_api
+PUT    | /api/faq/update/{id}              |            | \NikunjKabariya\Faq\FaqController | update                | admin_api
+PUT    | /api/faq/change_status            |            | \NikunjKabariya\Faq\FaqController | changeStatus          | admin_api
+GET    | /api/faq_topic/list               |            | \NikunjKabariya\Faq\FaqController | faqTopicList          | -
+GET    | /api/faqs/{faqTopicSlug}          |            | \NikunjKabariya\Faq\FaqController | getAllFaqsByFaqTopic  | -
+
 
 # Extend / Add new fields
 Copy these files in your application if not exist:
@@ -52,13 +68,13 @@ Copy these files in your application if not exist:
   ```
 
 - If you want to override any existing method or want to create new method, you can do it by extending FaqController.php from your application's new controller. for ex.:
-  ```
+  ```php
   use Nikunjkabariya\Faq\FaqController as FaqControllerPackage;
   class FaqController extends FaqControllerPackage {}
   ```  
   
   You can also override / create new method by extending Faq.php model file from your application's new model. for ex.:
-  ```
+  ```php
   use Nikunjkabariya\Faq\Faq as FaqModel;
   class Faq extends FaqModel {}
   ```
